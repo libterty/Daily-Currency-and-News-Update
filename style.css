@@ -1,0 +1,92 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h4,
+h5,
+h6 {
+    text-align: center;
+}
+
+a {
+    position: absolute;
+    right: 30%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    max-height: 96px;
+    display: block;
+    margin: auto;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 60px 35px;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    -webkit-animation: eMLfYp 300ms linear;
+    animation: eMLfYp 300ms linear;
+}
+
+#news {
+    flex-wrap: wrap;
+}
+
+.initBox {
+    width: 345px;
+    height: auto;
+    margin: 20px;
+    background-color: #3cc;
+    padding: 30px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5.5px;
+    cursor: pointer;
+    -webkit-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    font-weight: 900;
+    text-shadow: 0px 0px 3px #000;
+}
+
+.initBox:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    -webkit-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    -webkit-transform: scale(1.10);
+    -ms-transform: scale(1.10);
+    transform: scale(1.10);
+}
+
+.card-title {
+    max-height: 120px;
+    overflow-y: scroll;
+    min-height: 120px;
+}
