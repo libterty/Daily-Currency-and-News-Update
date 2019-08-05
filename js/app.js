@@ -1,14 +1,13 @@
-let endpoint = 'live';
-let accessKey = '3206599913347cf5840ede1749cb53b0';
-const BASE_URL = 'http://www.apilayer.net/api/';
-const INDEX_URL = BASE_URL + endpoint + '?' + 'access_key' + '=' + accessKey + '&format=1';
+const LIVE_URL = 'https://api.exchangeratesapi.io/latest'
 const data = [];
 const storeData = JSON.parse(localStorage.getItem('storeData')) || {};
 
-axios.get(INDEX_URL)
+axios.get(LIVE_URL)
     .then((response) => {
-        data.push(response.data.quotes);
-        storeData[response.data.timestamp] = { USDTWD: data[0].USDTWD, USDCNY: data[0].USDCNY, USDEUR: data[0].USDEUR };
+        data.push(response.data);
+        let reg = new RegExp('-', 'g');
+        let yearDate = response.data.date.replace(reg, '');
+        storeData[yearDate] = { EURUSD: data[0].rates.USD, EURCNY: data[0].rates.CNY, EURJPY: data[0].rates.JPY };
         localStorage.setItem('storeData', JSON.stringify(storeData));
         displayDataKeys();
     }).catch((err) => alert(err));
@@ -20,10 +19,10 @@ function displayDataKeys() {
     <div class="initBox">
         <div>
             <div class="card-title">
-                <h4>USDTWD</h4>
+                <h4>EURUSD</h4>
             </div>
             <div class="card-body quotes-value">
-                <h5>${data[0].USDTWD}</h5>
+                <h5>${data[0].rates.USD}</h5>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary btn-show-movie" data-toggle="collapse" data-target="#show-information" data-id="">Learn More</button>
@@ -33,10 +32,10 @@ function displayDataKeys() {
     <div class="initBox">
         <div>
             <div class="card-title">
-                <h4>USDCNY</h4>
+                <h4>EURCNY</h4>
             </div>
             <div class="card-body quotes-value">
-                <h5>${data[0].USDCNY}</h5>
+                <h5>${data[0].rates.CNY}</h5>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary btn-show-movie" data-toggle="collapse" data-target="#show-information" data-id="">Learn More</button>
@@ -46,10 +45,10 @@ function displayDataKeys() {
     <div class="initBox">
         <div>
             <div class="card-title">
-                <h4>USDEUR</h4>
+                <h4>EURJPY</h4>
             </div>
             <div class="card-body quotes-value">
-                <h5>${data[0].USDEUR}</h5>
+                <h5>${data[0].rates.JPY}</h5>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary btn-show-movie" data-toggle="collapse" data-target="#show-information" data-id="">Learn More</button>

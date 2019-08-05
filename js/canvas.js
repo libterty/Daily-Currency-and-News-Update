@@ -1,7 +1,6 @@
-let storeTWD = [],
+let storeUSD = [],
     storeCNY = [],
-    storeEUR = [];
-let newDate = new Date(Object.keys(storeData) * 1000);
+    storeJPY = [];
 
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -11,13 +10,13 @@ window.chartColors = {
 
 function dataset() {
     for (let i = 0; i < Object.values(storeData).length; i++) {
-        storeTWD.push(Object.values(storeData)[i].USDTWD);
+        storeUSD.push(Object.values(storeData)[i].EURUSD);
     }
     for (let j = 0; j < Object.values(storeData).length; j++) {
-        storeCNY.push(Object.values(storeData)[j].USDCNY);
+        storeCNY.push(Object.values(storeData)[j].EURCNY);
     }
     for (let k = 0; k < Object.values(storeData).length; k++) {
-        storeEUR.push(Object.values(storeData)[k].USDEUR);
+        storeJPY.push(Object.values(storeData)[k].EURJPY);
     }
 }
 
@@ -28,22 +27,22 @@ let config = {
     data: {
         labels: Object.keys(storeData),
         datasets: [{
-            label: 'USDTWD',
+            label: 'EURUSD',
             backgroundColor: window.chartColors.red,
             borderColor: window.chartColors.red,
-            data: storeTWD,
+            data: storeUSD,
             fill: false
         }, {
-            label: 'USDCNY',
+            label: 'EURCNY',
             backgroundColor: window.chartColors.blue,
             borderColor: window.chartColors.blue,
             data: storeCNY,
             fill: false
         }, {
-            label: 'USDEUR',
+            label: 'EURJPY',
             backgroundColor: window.chartColors.green,
             borderColor: window.chartColors.green,
-            data: storeEUR,
+            data: storeJPY,
             fill: false
         }]
     },
@@ -60,9 +59,9 @@ let config = {
                     color: ['pink', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']
                 },
                 ticks: {
-                    min: -2,
-                    max: 45,
-                    stepSize: 1
+                    min: 0,
+                    max: 120,
+                    stepSize: 10
                 }
             }]
         }
